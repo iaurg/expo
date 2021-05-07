@@ -6,6 +6,7 @@
 @class EXDevLauncherPendingDeepLinkRegistry;
 @class EXDevLauncherController;
 @class EXDevLauncherManifest;
+@class EXDevLauncherErrorManager;
 
 @protocol EXDevLauncherControllerDelegate <NSObject>
 
@@ -16,6 +17,7 @@
 
 @interface EXDevLauncherController : NSObject <RCTBridgeDelegate>
 
+@property (nonatomic, strong) RCTBridge *launcherBridge;
 @property (nonatomic, weak) RCTBridge *appBridge;
 @property (nonatomic, strong) EXDevLauncherPendingDeepLinkRegistry *pendingDeepLinkRegistry;
 
@@ -38,6 +40,10 @@
 - (EXDevLauncherManifest *)appManifest;
 
 - (BOOL)isAppRunning;
+
+- (UIWindow * _Nullable)currentWindow;
+
+- (EXDevLauncherErrorManager *)errorManager;
 
 + (NSString * _Nullable)version;
 
